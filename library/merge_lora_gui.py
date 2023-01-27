@@ -12,7 +12,7 @@ folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
-PYTHON = 'python3' if os.name == 'posix' else './venv/Scripts/python.exe'
+PYTHON = f". {os.environ['ROOT']}/kohya_venv/bin/activate; python "
 
 def check_model(model):
     if not model:
@@ -82,7 +82,7 @@ def merge_lora(
     if os.name == 'posix':
         os.system(run_cmd)
     else:
-        subprocess.run(run_cmd)
+        subprocess.run(run_cmd, shell=True)
 
     print('Done merging...')
 
@@ -116,7 +116,7 @@ def gradio_merge_lora_tab():
                 outputs=sd_model,
                 show_progress=False,
             )
-            
+
         with gr.Row():
             lora_a_model = gr.Textbox(
                 label='LoRA model "A"',
@@ -147,7 +147,7 @@ def gradio_merge_lora_tab():
                 outputs=lora_b_model,
                 show_progress=False,
             )
-            
+
         with gr.Row():
             ratio_a = gr.Slider(
                 label='Model A merge ratio (eg: 0.5 mean 50%)',
@@ -157,7 +157,7 @@ def gradio_merge_lora_tab():
                 value=0.0,
                 interactive=True,
             )
-            
+
             ratio_b = gr.Slider(
                 label='Model B merge ratio (eg: 0.5 mean 50%)',
                 minimum=0,
@@ -166,7 +166,7 @@ def gradio_merge_lora_tab():
                 value=0.0,
                 interactive=True,
             )
-            
+
         with gr.Row():
             lora_c_model = gr.Textbox(
                 label='LoRA model "C"',
@@ -182,7 +182,7 @@ def gradio_merge_lora_tab():
                 outputs=lora_c_model,
                 show_progress=False,
             )
-            
+
             lora_d_model = gr.Textbox(
                 label='LoRA model "D"',
                 placeholder='Path to the LoRA D model',
@@ -197,7 +197,7 @@ def gradio_merge_lora_tab():
                 outputs=lora_d_model,
                 show_progress=False,
             )
-            
+
         with gr.Row():
             ratio_c = gr.Slider(
                 label='Model C merge ratio (eg: 0.5 mean 50%)',
@@ -207,7 +207,7 @@ def gradio_merge_lora_tab():
                 value=0.0,
                 interactive=True,
             )
-            
+
             ratio_d = gr.Slider(
                 label='Model D merge ratio (eg: 0.5 mean 50%)',
                 minimum=0,

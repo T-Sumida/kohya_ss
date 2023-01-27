@@ -33,7 +33,8 @@ def caption_images(
         return
 
     print(f'Captioning files in {train_data_dir}...')
-    run_cmd = f'accelerate launch "./finetune/tag_images_by_wd14_tagger.py"'
+    run_cmd = f". {os.environ['ROOT']}/kohya_venv/bin/activate; "
+    run_cmd += f'accelerate launch "./finetune/tag_images_by_wd14_tagger.py"'
     run_cmd += f' --batch_size="{int(batch_size)}"'
     run_cmd += f' --thresh="{thresh}"'
     run_cmd += f' --caption_extension="{caption_extension}"'
@@ -45,8 +46,8 @@ def caption_images(
     if os.name == 'posix':
         os.system(run_cmd)
     else:
-        subprocess.run(run_cmd)
-        
+        subprocess.run(run_cmd, shell=True)
+
     if replace_underscores:
         replace_underscore_with_space(train_data_dir, caption_extension)
 

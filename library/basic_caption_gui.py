@@ -4,6 +4,7 @@ import subprocess
 from .common_gui import get_folder_path, add_pre_postfix, find_replace
 import os
 
+PYTHON = f". {os.environ['ROOT']}/kohya_venv/bin/activate; python "
 
 def caption_images(
     caption_text,
@@ -26,7 +27,7 @@ def caption_images(
 
     if caption_text:
         print(f'Captioning files in {images_dir} with {caption_text}...')
-        run_cmd = f'python "tools/caption.py"'
+        run_cmd = PYTHON + f' "tools/caption.py"'
         run_cmd += f' --caption_text="{caption_text}"'
         if overwrite:
             run_cmd += f' --overwrite'
@@ -40,7 +41,7 @@ def caption_images(
         if os.name == 'posix':
             os.system(run_cmd)
         else:
-            subprocess.run(run_cmd)
+            subprocess.run(run_cmd, shell=True)
 
     if overwrite:
         if prefix or postfix:

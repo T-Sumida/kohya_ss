@@ -4,7 +4,7 @@ import subprocess
 import os
 from .common_gui import get_folder_path, add_pre_postfix
 
-PYTHON = 'python3' if os.name == 'posix' else './venv/Scripts/python.exe'
+PYTHON = f". {os.environ['ROOT']}/kohya_venv/bin/activate; python "
 
 
 def caption_images(
@@ -47,7 +47,7 @@ def caption_images(
     if os.name == 'posix':
         os.system(run_cmd)
     else:
-        subprocess.run(run_cmd)
+        subprocess.run(run_cmd, shell=True)
 
     # Add prefix and postfix
     add_pre_postfix(
