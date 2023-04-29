@@ -11,7 +11,8 @@ folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
-PYTHON = 'python3' if os.name == 'posix' else './venv/Scripts/python.exe'
+PYTHON = f". {os.environ['ROOT']}/kohya_venv/bin/activate; python "
+
 
 def merge_lycoris(
     base_model,
@@ -40,7 +41,7 @@ def merge_lycoris(
     if os.name == 'posix':
         os.system(run_cmd)
     else:
-        subprocess.run(run_cmd)
+        subprocess.run(run_cmd, shell=True)
 
     print('Done merging...')
 

@@ -12,7 +12,7 @@ folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
-#PYTHON = 'python3' if os.name == 'posix' else './venv/Scripts/python.exe'
+PYTHON = f". {os.environ['ROOT']}/kohya_venv/bin/activate; python "
 
 
 def extract_lora(
@@ -43,8 +43,7 @@ def extract_lora(
         msgbox('The provided base model is not a file')
         return
 
-    run_cmd = f". {os.environ['ROOT']}/kohya_venv/bin/activate; "
-    run_cmd +=f'python "networks/extract_lora_from_models.py"'
+    run_cmd = f'{PYTHON} "networks/extract_lora_from_models.py"'
     run_cmd += f' --save_precision {save_precision}'
     run_cmd += f' --save_to "{save_to}"'
     run_cmd += f' --model_org "{model_org}"'

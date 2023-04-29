@@ -40,6 +40,7 @@ from library.utilities import utilities_tab
 from library.sampler_gui import sample_gradio_config, run_cmd_sample
 from easygui import msgbox
 
+ACCELERATE = f". {os.environ['ROOT']}/kohya_venv/bin/activate; accelerate "
 folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
@@ -440,8 +441,7 @@ def train_model(
     lr_warmup_steps = round(float(int(lr_warmup) * int(max_train_steps) / 100))
     print(f'lr_warmup_steps = {lr_warmup_steps}')
 
-    run_cmd = f". {os.environ['ROOT']}/kohya_venv/bin/activate; "
-    run_cmd += f'accelerate launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "train_textual_inversion.py"'
+    run_cmd = f'{ACCELERATE} launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "train_textual_inversion.py"'
     if v2:
         run_cmd += ' --v2'
     if v_parameterization:

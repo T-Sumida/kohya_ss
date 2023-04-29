@@ -4,6 +4,8 @@ import subprocess
 from .common_gui import get_folder_path
 import os
 
+ACCELERATE = f". {os.environ['ROOT']}/kohya_venv/bin/activate; accelerate "
+
 
 def replace_underscore_with_space(folder_path, file_extension):
     for file_name in os.listdir(folder_path):
@@ -14,6 +16,7 @@ def replace_underscore_with_space(folder_path, file_extension):
             new_file_content = file_content.replace('_', ' ')
             with open(file_path, 'w') as file:
                 file.write(new_file_content)
+
 
 def caption_images(
     train_data_dir, caption_extension, batch_size, thresh, replace_underscores
@@ -33,8 +36,7 @@ def caption_images(
         return
 
     print(f'Captioning files in {train_data_dir}...')
-    run_cmd = f". {os.environ['ROOT']}/kohya_venv/bin/activate; "
-    run_cmd += f'accelerate launch "./finetune/tag_images_by_wd14_tagger.py"'
+    run_cmd = f'{ACCELERATE} launch "./finetune/tag_images_by_wd14_tagger.py"'
     run_cmd += f' --batch_size="{int(batch_size)}"'
     run_cmd += f' --thresh="{thresh}"'
     run_cmd += f' --caption_extension="{caption_extension}"'
@@ -81,7 +83,7 @@ def gradio_wd14_caption_gui_tab():
 
             caption_extension = gr.Textbox(
                 label='Caption file extension',
-                placeholder='Extention for caption file. eg: .caption, .txt',
+                placeholder='Extension for caption file. eg: .caption, .txt',
                 value='.txt',
                 interactive=True,
             )

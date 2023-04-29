@@ -27,7 +27,7 @@ def caption_images(
 
     if caption_text:
         print(f'Captioning files in {images_dir} with {caption_text}...')
-        run_cmd = PYTHON + f' "tools/caption.py"'
+        run_cmd = f'{PYTHON} "tools/caption.py"'
         run_cmd += f' --caption_text="{caption_text}"'
         if overwrite:
             run_cmd += f' --overwrite'

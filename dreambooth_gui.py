@@ -44,6 +44,7 @@ folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
+ACCELERATE = f". {os.environ['ROOT']}/kohya_venv/bin/activate; accelerate "
 
 
 def save_configuration(
@@ -438,8 +439,7 @@ def train_model(
     lr_warmup_steps = round(float(int(lr_warmup) * int(max_train_steps) / 100))
     print(f'lr_warmup_steps = {lr_warmup_steps}')
 
-    run_cmd = f". {os.environ['ROOT']}/kohya_venv/bin/activate; "
-    run_cmd += f'accelerate launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "train_db.py"'
+    run_cmd = f'{PYTHON} launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "train_db.py"'
     if v2:
         run_cmd += ' --v2'
     if v_parameterization:
