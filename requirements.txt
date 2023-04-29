@@ -23,13 +23,7 @@ requests==2.28.2
 timm==0.6.12
 # tensorflow<2.11
 huggingface-hub==0.13.3
-tensorflow
-torch
-torchvision
-xformers
 # For locon support
 lycoris_lora==0.1.4
 # for kohya_ss library
-deepspeed
-triton
 .
