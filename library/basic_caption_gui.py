@@ -4,7 +4,7 @@ import subprocess
 from .common_gui import get_folder_path, add_pre_postfix, find_replace
 import os
 
-PYTHON = f". {os.environ['ROOT']}/kohya_venv/bin/activate; python "
+PYTHON = f". /venv/bin/activate; python "
 
 def caption_images(
     caption_text,

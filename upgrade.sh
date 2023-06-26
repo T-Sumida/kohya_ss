@@ -10,7 +10,7 @@ fi
 git pull
 
 # Activate the virtual environment
-source venv/bin/activate
+source /venv/bin/activate
 
 # Upgrade the required packages
 pip install --use-pep517 --upgrade -r requirements.txt

@@ -44,7 +44,7 @@ folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
-ACCELERATE = f". {os.environ['ROOT']}/kohya_venv/bin/activate; accelerate "
+ACCELERATE = f". /venv/bin/activate; accelerate "
 
 
 def save_configuration(

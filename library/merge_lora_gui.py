@@ -12,7 +12,7 @@ folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
-PYTHON = f". {os.environ['ROOT']}/kohya_venv/bin/activate; python "
+PYTHON = f". /venv/bin/activate; python "
 
 def check_model(model):
     if not model:

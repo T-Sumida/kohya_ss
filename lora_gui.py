@@ -46,7 +46,7 @@ from library.resize_lora_gui import gradio_resize_lora_tab
 from library.sampler_gui import sample_gradio_config, run_cmd_sample
 from easygui import msgbox
 
-ACCELERATE = f". {os.environ['ROOT']}/kohya_venv/bin/activate; accelerate "
+ACCELERATE = f". /venv/bin/activate; accelerate "
 folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾

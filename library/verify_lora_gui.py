@@ -8,7 +8,7 @@ from .common_gui import (
     get_file_path,
 )
 
-PYTHON = f". {os.environ['ROOT']}/kohya_venv/bin/activate; python "
+PYTHON = f". /venv/bin/activate; python "
 folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾

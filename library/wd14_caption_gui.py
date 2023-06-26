@@ -4,7 +4,7 @@ import subprocess
 from .common_gui import get_folder_path
 import os
 
-ACCELERATE = f". {os.environ['ROOT']}/kohya_venv/bin/activate; accelerate "
+ACCELERATE = f". /venv/bin/activate; accelerate "
 
 
 def replace_underscore_with_space(folder_path, file_extension):

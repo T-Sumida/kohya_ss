@@ -16,7 +16,7 @@ def start_tensorboard(logging_dir):
         msgbox(msg='Error: log folder is empty')
         return
 
-    run_cmd = f". {os.environ['ROOT']}/kohya_venv/bin/activate; "
+    run_cmd = f". /venv/bin/activate; "
     run_cmd += [f'tensorboard', '--logdir', f'{logging_dir}']
 
     print(run_cmd)

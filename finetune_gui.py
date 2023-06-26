@@ -36,8 +36,8 @@ refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
 
-PYTHON = f". {os.environ['ROOT']}/kohya_venv/bin/activate; python "
-ACCELERATE = f". {os.environ['ROOT']}/kohya_venv/bin/activate; accelerate "
+PYTHON = f". /venv/bin/activate; python "
+ACCELERATE = f". /venv/bin/activate; accelerate "
 
 
 def save_configuration(
